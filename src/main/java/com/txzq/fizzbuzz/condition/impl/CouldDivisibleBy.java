@@ -11,7 +11,6 @@ public class CouldDivisibleBy extends Matcher
 	public CouldDivisibleBy(Integer factor, String output)
 	{
 		super(factor, output);
-		this.initCondition();
 	}
 
 	@Override

@@ -11,6 +11,7 @@ public abstract class Matcher implements Condition
 	{
 		this.factor = factor;
 		this.output = output;
+		this.initCondition();
 	}
 	
 	public abstract void initCondition();

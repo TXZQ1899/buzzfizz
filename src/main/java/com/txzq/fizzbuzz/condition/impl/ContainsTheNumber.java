@@ -11,7 +11,6 @@ public class ContainsTheNumber extends Matcher
 	public ContainsTheNumber(Integer factor, String output)
 	{
 		super(factor, output);
-		this.initCondition();
 	}
 
 	@Override
