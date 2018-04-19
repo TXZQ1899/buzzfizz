@@ -44,8 +44,6 @@ public class FizzBuzzApp
         return MyApp.instance;
     }
 
-	
-	
 	public String getOutput(Integer i)
 	{
 		String output = "";
@@ -60,6 +58,16 @@ public class FizzBuzzApp
 		if (output.isEmpty()) output = i.toString();
 		
 		return output;
+	}
+	
+	public static void main(String[] args)
+	{
+		FizzBuzzApp myApp = FizzBuzzApp.getInstance();
+		
+		for(int i = 1 ; i<=100 ; i++)
+		{
+			System.out.println(myApp.getOutput(i));
+		}
 	}
 
 }
