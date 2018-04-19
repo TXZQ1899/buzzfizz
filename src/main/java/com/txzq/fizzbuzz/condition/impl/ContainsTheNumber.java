@@ -8,9 +8,10 @@ public class ContainsTheNumber extends Matcher
 	
 	public ContainsTheNumber() {}
 	
-	public ContainsTheNumber(Integer factor)
+	public ContainsTheNumber(Integer factor, String output)
 	{
-		super(factor);
+		super(factor, output);
+		this.initCondition();
 	}
 
 	@Override
@@ -19,4 +20,5 @@ public class ContainsTheNumber extends Matcher
 		Predicate<Integer> condition = (number) -> (number.toString().contains(getFactor().toString()));
 		super.setCondition(condition);
 	}
+	
 }

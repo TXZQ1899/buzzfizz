@@ -7,12 +7,15 @@ public abstract class Matcher implements Condition
 	
 	public Matcher(){}
 	
-	public Matcher(Integer factor)
+	public Matcher(Integer factor, String output)
 	{
 		this.factor = factor;
+		this.output = output;
 	}
 	
 	public abstract void initCondition();
+	
+	private String output;
 	
 	private Predicate<Integer> condition;
 	
@@ -38,4 +41,11 @@ public abstract class Matcher implements Condition
 	{
 		return condition.test(number);
 	}
+	
+	public String getOutput()
+	{
+		return this.output;
+	}
+	
+	
 }

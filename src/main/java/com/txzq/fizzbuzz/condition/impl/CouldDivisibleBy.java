@@ -8,9 +8,10 @@ public class CouldDivisibleBy extends Matcher
 	
 	public CouldDivisibleBy() {}
 	
-	public CouldDivisibleBy(Integer factor)
+	public CouldDivisibleBy(Integer factor, String output)
 	{
-		super(factor);
+		super(factor, output);
+		this.initCondition();
 	}
 
 	@Override
