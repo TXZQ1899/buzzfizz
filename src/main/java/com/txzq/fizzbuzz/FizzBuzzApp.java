@@ -4,30 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.txzq.fizzbuzz.condition.Matcher;
-import com.txzq.fizzbuzz.condition.impl.ContainsTheNumber;
-import com.txzq.fizzbuzz.condition.impl.CouldDivisibleBy;
+import static com.txzq.fizzbuzz.MatcherFactory.MatcherType.CouldDivisibleBy;
+import static com.txzq.fizzbuzz.MatcherFactory.MatcherType.ContainsTheNumber;
 
 public class FizzBuzzApp
 {
-	
-	private static final Matcher couldDevisibleBy3 = new CouldDivisibleBy(3, "FIZZ");
-	private static final Matcher couldDevisibleBy5 = new CouldDivisibleBy(5, "BUZZ");
-	private static final Matcher containsTheNumber3 = new ContainsTheNumber(3, "FIZZ");
-	private static final Matcher containsTheNumber5 = new ContainsTheNumber(5, "BUZZ");
-	
-	private List<Matcher> matchers = new ArrayList<>();
-	
 	private FizzBuzzApp()
 	{
-		initMatchers();
-	}
-	
-	private void initMatchers()
-	{
-		matchers.add(couldDevisibleBy3);
-		matchers.add(couldDevisibleBy5);
-		matchers.add(containsTheNumber3);
-		matchers.add(containsTheNumber5);
 	}
 	
 	public List<Matcher> getMatchers()
@@ -44,11 +27,14 @@ public class FizzBuzzApp
         return MyApp.instance;
     }
 
-	public String getOutput(Integer i)
+	public String getOutput(List<Matcher> matchers , Integer i)
 	{
+		
 		String output = "";
-		for(Matcher m : this.matchers)
+		for(Matcher m : matchers)
 		{
+			if (null == m) continue;
+			
 			if (m.match(i) && !output.contains(m.getOutput()))
 			{
 				output += m.getOutput();
@@ -63,10 +49,18 @@ public class FizzBuzzApp
 	public static void main(String[] args)
 	{
 		FizzBuzzApp myApp = FizzBuzzApp.getInstance();
+		List<Matcher> matchers = new ArrayList<>();
+		
+		
+		matchers.add(null);
+		matchers.add(MatcherFactory.getInstance().getMatcher(CouldDivisibleBy, 3, "FIZZ"));
+		matchers.add(MatcherFactory.getInstance().getMatcher(CouldDivisibleBy, 5, "BUZZ"));
+		matchers.add(MatcherFactory.getInstance().getMatcher(ContainsTheNumber, 3, "FIZZ"));
+		matchers.add(MatcherFactory.getInstance().getMatcher(ContainsTheNumber, 5, "BUZZ"));
 		
 		for(int i = 1 ; i<=100 ; i++)
 		{
-			System.out.println(myApp.getOutput(i));
+			System.out.println(myApp.getOutput(matchers, i));
 		}
 	}
 

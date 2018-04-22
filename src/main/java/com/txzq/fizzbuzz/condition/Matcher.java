@@ -2,6 +2,8 @@ package com.txzq.fizzbuzz.condition;
 
 import java.util.function.Predicate;
 
+import com.txzq.fizzbuzz.tools.Assert;
+
 public abstract class Matcher implements Condition
 {
 	
@@ -40,6 +42,7 @@ public abstract class Matcher implements Condition
 	@Override
 	public boolean match(Integer number)
 	{
+		Assert.notNull(number, "number should not null");
 		return condition.test(number);
 	}
 	
