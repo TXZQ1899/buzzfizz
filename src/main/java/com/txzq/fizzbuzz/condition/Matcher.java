@@ -40,15 +40,50 @@ public abstract class Matcher implements Condition
 	}
 	
 	@Override
-	public boolean match(Integer number)
+	public boolean match(Integer factor)
 	{
-		Assert.notNull(number, "number should not null");
-		return condition.test(number);
+		Assert.notNull(factor, "Factor should not null");
+		return condition.test(factor);
 	}
 	
 	public String getOutput()
 	{
 		return this.output;
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((factor == null) ? 0 : factor.hashCode());
+		result = prime * result + ((output == null) ? 0 : output.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Matcher other = (Matcher) obj;
+		if (factor == null)
+		{
+			if (other.factor != null)
+				return false;
+		} else if (!factor.equals(other.factor))
+			return false;
+		if (output == null)
+		{
+			if (other.output != null)
+				return false;
+		} else if (!output.equals(other.output))
+			return false;
+		return true;
 	}
 	
 	

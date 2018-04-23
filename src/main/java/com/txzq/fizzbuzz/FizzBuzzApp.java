@@ -13,11 +13,6 @@ public class FizzBuzzApp
 	{
 	}
 	
-	public List<Matcher> getMatchers()
-	{
-		return this.getMatchers();
-	}
-	
 	private static class MyApp
 	{
 		private static final FizzBuzzApp instance = new FizzBuzzApp();
@@ -51,8 +46,6 @@ public class FizzBuzzApp
 		FizzBuzzApp myApp = FizzBuzzApp.getInstance();
 		List<Matcher> matchers = new ArrayList<>();
 		
-		
-		matchers.add(null);
 		matchers.add(MatcherFactory.getInstance().getMatcher(CouldDivisibleBy, 3, "FIZZ"));
 		matchers.add(MatcherFactory.getInstance().getMatcher(CouldDivisibleBy, 5, "BUZZ"));
 		matchers.add(MatcherFactory.getInstance().getMatcher(ContainsTheNumber, 3, "FIZZ"));

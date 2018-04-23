@@ -8,7 +8,7 @@ public class MatcherFactory
 {
 	public static enum MatcherType
 	{
-		CouldDivisibleBy,ContainsTheNumber
+		CouldDivisibleBy,ContainsTheNumber,NotImpl
 	}
 	
 	private MatcherFactory()

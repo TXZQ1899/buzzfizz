@@ -19,4 +19,6 @@ public class CouldDivisibleBy extends Matcher
 		Predicate<Integer> condition = (number) -> (number % getFactor() == 0);
 		super.setCondition(condition);
 	}
+	
+	
 }
